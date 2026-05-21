@@ -6,13 +6,16 @@
 	const phone = '(586) 800-3188';
 	const phoneHref = 'tel:+15868003188';
 
-	const nav = [
+	const services = [
 		{ label: 'CCTV Installation', href: '/services/cctv-installation' },
 		{ label: 'Legacy Upgrades', href: '/services/legacy-upgrades' },
-		{ label: 'Contact', href: '/contact' },
+		{ label: 'Access Control', href: '/services/access-control' },
+		{ label: 'VOIP & Networking', href: '/services/voip-networking' },
+		{ label: 'Solar Security', href: '/services/solar-security' },
 	];
 
 	let mobileMenuOpen = $state(false);
+	let servicesOpen = $state(false);
 </script>
 
 <svelte:head>
@@ -76,14 +79,36 @@
 
 			<!-- Desktop nav -->
 			<nav class="hidden md:flex items-center gap-6">
-				{#each nav as link}
-					<a
-						href={link.href}
-						class="text-sm font-medium text-slate-300 hover:text-white transition-colors"
+				<!-- Services dropdown -->
+				<div class="relative">
+					<button
+						onclick={() => servicesOpen = !servicesOpen}
+						class="flex items-center gap-1 text-sm font-medium text-slate-300 hover:text-white transition-colors"
 					>
-						{link.label}
-					</a>
-				{/each}
+						Services
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+							<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+						</svg>
+					</button>
+					{#if servicesOpen}
+						<div
+							class="absolute top-full left-0 mt-2 w-52 rounded-lg bg-slate-900 border border-slate-800 shadow-xl py-1 z-50"
+						>
+							{#each services as svc}
+								<a
+									href={svc.href}
+									onclick={() => servicesOpen = false}
+									class="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-slate-800 transition-colors"
+								>
+									{svc.label}
+								</a>
+							{/each}
+						</div>
+					{/if}
+				</div>
+				<a href="/contact" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">
+					Contact
+				</a>
 			</nav>
 
 			<!-- Desktop CTA -->
@@ -119,15 +144,23 @@
 	<!-- Mobile dropdown -->
 	{#if mobileMenuOpen}
 		<div class="md:hidden border-t border-slate-800 bg-slate-950 px-4 pb-4 pt-2">
-			{#each nav as link}
+			<p class="pt-2 pb-1 text-xs font-semibold uppercase tracking-wider text-slate-600">Services</p>
+			{#each services as svc}
 				<a
-					href={link.href}
+					href={svc.href}
 					onclick={() => mobileMenuOpen = false}
-					class="block py-3 text-sm font-medium text-slate-300 hover:text-white border-b border-slate-800 last:border-0"
+					class="block py-3 text-sm font-medium text-slate-300 hover:text-white border-b border-slate-800"
 				>
-					{link.label}
+					{svc.label}
 				</a>
 			{/each}
+			<a
+				href="/contact"
+				onclick={() => mobileMenuOpen = false}
+				class="block py-3 text-sm font-medium text-slate-300 hover:text-white"
+			>
+				Contact
+			</a>
 		</div>
 	{/if}
 </header>
@@ -152,6 +185,9 @@
 				<ul class="space-y-2 text-sm">
 					<li><a href="/services/cctv-installation" class="hover:text-white transition-colors">CCTV Installation</a></li>
 					<li><a href="/services/legacy-upgrades" class="hover:text-white transition-colors">Legacy System Upgrades</a></li>
+					<li><a href="/services/access-control" class="hover:text-white transition-colors">Access Control</a></li>
+					<li><a href="/services/voip-networking" class="hover:text-white transition-colors">VOIP & Networking</a></li>
+					<li><a href="/services/solar-security" class="hover:text-white transition-colors">Solar Security</a></li>
 					<li><a href="/contact" class="hover:text-white transition-colors">Get a Free Quote</a></li>
 				</ul>
 			</div>

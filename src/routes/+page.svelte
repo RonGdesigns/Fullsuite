@@ -16,7 +16,7 @@
 				'Existing coax runs? Outdated DVR? We modernize analog systems to HD without unnecessary rewiring.',
 		},
 		{
-			href: '/contact',
+			href: '/services/access-control',
 			title: 'Access Control',
 			description:
 				'Keypad, fob, and card-reader entry systems for residential and commercial properties. Including FobZZ, ZKteco, and Axis Communications hardware.',
@@ -28,13 +28,13 @@
 				'Structured cabling, conduit runs, and PoE infrastructure done cleanly the first time.',
 		},
 		{
-			href: '/contact',
+			href: '/services/voip-networking',
 			title: 'VOIP & Networking',
 			description:
 				'Business phone systems and network infrastructure installed alongside your security systems.',
 		},
 		{
-			href: '/contact',
+			href: '/services/solar-security',
 			title: 'Solar Security',
 			description:
 				'Off-grid solar-powered security cameras and systems — available for sale and rental.',
